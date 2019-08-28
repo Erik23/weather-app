@@ -20,7 +20,7 @@ const app = new Vue({
     },
     methods: {
         getWeather (city = 'Aguascalientes') {
-            const endpoint = `https:\\api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=es&uk&APPID=${apiKey}`
+            const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=es&uk&APPID=${apiKey}`
             fetch(endpoint)
                 .then(response => response.json())
                 .then(response => {
