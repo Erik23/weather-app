@@ -1,0 +1,21 @@
+export const icons = [
+    { current: '01d', replacement: 'wi-day-sunny' },
+    { current: '02d', replacement: 'wi-day-cloudy' },
+    { current: '03d', replacement: 'wi-cloud' },
+    { current: '04d', replacement: 'wi-cloudy' },
+    { current: '09d', replacement: 'wi-showers' },
+    { current: '10d', replacement: 'wi-rain' },
+    { current: '11d', replacement: 'wi-thunderstorm' },
+    { current: '13d', replacement: 'wi-snowflake-cold' },
+    { current: '50d', replacement: 'wi-dust' },
+
+    { current: '01n', replacement: 'wi-night-clear' },
+    { current: '02n', replacement: 'wi-night-alt-cloudy' },
+    { current: '03n', replacement: 'wi-cloud' },
+    { current: '04n', replacement: 'wi-cloudy' },
+    { current: '09n', replacement: 'wi-showers' },
+    { current: '10n', replacement: 'wi-rain' },
+    { current: '11n', replacement: 'wi-thunderstorm' },
+    { current: '13n', replacement: 'wi-snowflake-cold' },
+    { current: '14n', replacement: 'wi-dust' },
+]

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clima</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/weather-icons/css/weather-icons.min.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+
+<body>
+    <div id="app" class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0 rounded">
+                    <div class="card-body">
+                        <!-- Filtros - Tema(darl-light) -->
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <!-- <i class="wi wi-day-sunny"></i> -->
+                                <select class="custom-select border-0 shadow-none bg-transparent" v-model="selectedState" @change="setState">
+                                        <option :value="state.name" v-for="state in states">
+                                            {{ state.name }}
+                                        </option>
+                                  </select>
+                                  <select class="custom-select border-0 shadow-none bg-transparent" id="select-city" @change="setCity">
+                                    <option v-for="city in cities" :value="city.name">
+                                        {{ city.name }}
+                                    </option>
+                                  </select>
+                            </div>
+                            <div>
+                                <button class="btn btn-info btn-sm" @click="changeTheme">
+                                    {{ theme == 'light' ? 'Tema oscuro' : 'Tema claro'}}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Clima -->
+                        <div class="py-5 d-flex justify-content-center">
+                            <div class="p-4">
+                                <i class="wi size-5rem" :class="weather.weather.icon.replacement"></i>
+                            </div>
+                            <div class="p-4">
+                                <p class="display-4">
+                                    {{ weather.main.temp }}
+                                    <i class="wi wi-degrees"></i>
+                                </p>
+                                <h4>
+                                    {{ weather.weather.description | capitalize }}
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="p-3 d-flex flex-column align-items-center">
+                                <i class="wi wi-strong-wind"></i>
+                                <b>
+                                    {{ weather.wind.speed }} ml/h
+                                </b>
+                            </div>
+                            <div class="p-3 d-flex flex-column align-items-center">
+                                <i class="wi wi-thermometer"></i>
+                                <b>
+                                    {{ weather.main.temp_max }}
+                                    <i class="wi wi-celsius"></i>
+                                </b>
+                            </div>
+                            <div class="p-3 d-flex flex-column align-items-center">
+                                <i class="wi wi-thermometer-exterior"></i>
+                                <b>
+                                    {{ weather.main.temp_min }}
+                                    <i class="wi wi-celsius"></i>
+                                </b>
+                            </div>
+                        </div>
+                        <!-- Información adicional -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="module" src="./assets/javascript/javascript.js"></script>
+</body>
+
+</html>

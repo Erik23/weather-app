@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,500,600&display=swap");
+body {
+  background: #f5f9fc;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.size-5rem {
+  font-size: 5rem;
+}
+
+.card h4 {
+  color: #6c757d;
+}
+
+/* Dark theme */
+body.dark {
+  background: black;
+}
+
+body.dark .card {
+  background: #252424;
+  color: white;
+}
+
+body.dark h4 {
+  color: white;
+}
+
+body.dark .custom-select {
+  color: white;
+}
+
+body.dark .custom-select option {
+  color: grey;
+}
+/*# sourceMappingURL=styles.css.map */
