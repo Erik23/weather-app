@@ -22,13 +22,12 @@
                         <!-- Filtros - Tema(darl-light) -->
                         <div class="d-flex justify-content-between">
                             <div class="d-flex">
-                                <!-- <i class="wi wi-day-sunny"></i> -->
                                 <select class="custom-select border-0 shadow-none bg-transparent" v-model="selectedState" @change="setState">
                                         <option :value="state.name" v-for="state in states">
                                             {{ state.name }}
                                         </option>
                                   </select>
-                                  <select class="custom-select border-0 shadow-none bg-transparent" id="select-city" @change="setCity">
+                                  <select class="custom-select border-0 shadow-none bg-transparent" id="select-city" @change="setCity" v-model="selectedCity">
                                     <option v-for="city in cities" :value="city.name">
                                         {{ city.name }}
                                     </option>
@@ -36,8 +35,8 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-circle mr-2 toggle-light"></i>
-                                <i v-if="theme == 'light'" @click="changeTheme" class="fas fa-toggle-off fa-2x"></i>
-                                <i v-else @click="changeTheme" class="fas fa-toggle-on fa-2x text-secondary"></i>
+                                <i v-if="theme == 'light'" @click="changeTheme('dark')" class="fas fa-toggle-off fa-2x"></i>
+                                <i v-else @click="changeTheme('light')" class="fas fa-toggle-on fa-2x text-secondary"></i>
                                 <i class="fas fa-circle ml-2 text-dark"></i>
                             </div>
                         </div>
@@ -57,6 +56,8 @@
                                 </h5>
                             </div>
                         </div>
+
+                        <!-- Información adicional -->
                         <div class="d-flex justify-content-center">
                             <div class="p-3 d-flex flex-column align-items-center">
                                 <i class="wi wi-strong-wind"></i>
@@ -79,7 +80,7 @@
                                 </b>
                             </div>
                         </div>
-                        <!-- Información adicional -->
+
                     </div>
                 </div>
             </div>

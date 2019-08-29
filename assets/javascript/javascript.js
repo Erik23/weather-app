@@ -12,14 +12,15 @@ const app = new Vue({
         theme: 'light',
         states,
         selectedState: 'Aguascalientes',
+        selectedCity: 'Aguascalientes',
         cities: []
     },
     mounted() {
-        this.getWeather()
+        this.getLocalStorage()
         this.setState()
     },
     methods: {
-        getWeather (city = 'Aguascalientes') {
+        getWeather (city) {
             const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=es&uk&APPID=${apiKey}`
             fetch(endpoint)
                 .then(response => response.json())
@@ -35,6 +36,21 @@ const app = new Vue({
                 })
             
         },
+        getLocalStorage() {
+            const theme = localStorage.getItem("theme")
+            if(theme) {
+                this.changeTheme(theme)
+            }
+            const state = localStorage.getItem("state")
+            const city = localStorage.getItem("city")
+            if(state) {
+                this.getWeather(city)
+                this.selectedState = state
+                this.selectedCity = city
+            } else {
+                this.getWeather('Aguascalientes')
+            }
+        },
         findIcon(current) { // Buscamos el ícono adecuado, recibimos como argumento el icon que nos devuelve la api
             const icon  = icons.find(icon => {
                 return icon.current === current
@@ -46,15 +62,37 @@ const app = new Vue({
                 return state.name == this.selectedState
             })
             this.cities = currentState.cities;
-            this.getWeather(currentState.cities[0].name)
+
+            if(!this.findCity()) {
+                const firstCityName = currentState.cities[0].name // Primera ciudad del estado
+                this.selectedCity = firstCityName;
+            }
+            this.getWeather(this.selectedCity)
+
+            // Guardamos en localstorage
+            localStorage.setItem("state", currentState.name);
+            localStorage.setItem("city", this.selectedCity)
+        },
+        findCity() { //buscamos si la ciudad que se encuentra en selectedCity pertenece al estado 
+            const city = this.cities.find((city) => {
+                return city.name == this.selectedCity
+            })
+            return city
         },
         setCity() {
             const city = document.getElementById('select-city').value
             this.getWeather(city)
+            localStorage.setItem("city", city)
         },
-        changeTheme() {
-            this.theme == 'light' ? this.theme = 'dark' : this.theme = 'light'
-            const body = document.querySelector('body').classList.toggle('dark')
+        changeTheme(theme) {
+            this.theme = theme
+            const current = theme == 'dark' ? 'light' : 'dark'
+            const body = document.querySelector('body')
+            body.classList.remove(current) // Eliminamos el tema actual
+            body.classList.add(theme) // Agregamos el tema nuevo
+
+            // Guardamos en localstorage
+            localStorage.setItem("theme", theme);
         }
     },
     filters: {
