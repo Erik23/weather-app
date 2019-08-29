@@ -1,21 +1,20 @@
 import { aguascalientes } from './cities/aguascalientes.js'
 import { bajaCalifornia } from './cities/bajaCalifornia.js'
+import { bajaCaliforniaSur } from './cities/bajaCaliforniaSur.js'
+import { campeche } from './cities/campeche.js'
+import { colima } from './cities/Colima.js';
 export const states = [
     { name: 'Aguascalientes', cities: aguascalientes },
-    { name: 'Baja Californa', cities: bajaCalifornia }
+    { name: 'Baja Californa', cities: bajaCalifornia },
+    { name: 'Baja California Sur', cities: bajaCaliforniaSur },
+    { name: 'Campeche', cities: campeche},
+    { name: 'Colima', cities: colima}
 
 ]
 
 /*
-<option value="2">Baja California</option>
-
-<option value="3">Baja California Sur</option>
-
-<option value="4">Campeche</option>
 
 <option value="5">Coahuila de Zaragoza</option>
-
-<option value="6">Colima</option>
 
 <option value="7">Chiapas</option>
 

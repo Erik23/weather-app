@@ -30,6 +30,9 @@ const app = new Vue({
                     this.weather.weather.icon = this.findIcon(response.weather[0].icon)
                     this.weather.wind = response.wind
                 })
+                .catch(() => {
+                    alert(`No encontramos información de ${city}`)
+                })
             
         },
         findIcon(current) { // Buscamos el ícono adecuado, recibimos como argumento el icon que nos devuelve la api
