@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/weather-icons/css/weather-icons.min.css">
+    <script src="https://kit.fontawesome.com/50ead72691.js"></script>
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
@@ -33,10 +34,11 @@
                                     </option>
                                   </select>
                             </div>
-                            <div>
-                                <button class="btn btn-info btn-sm" @click="changeTheme">
-                                    {{ theme == 'light' ? 'Tema oscuro' : 'Tema claro'}}
-                                </button>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-circle mr-2 toggle-light"></i>
+                                <i v-if="theme == 'light'" @click="changeTheme" class="fas fa-toggle-off fa-2x"></i>
+                                <i v-else @click="changeTheme" class="fas fa-toggle-on fa-2x text-secondary"></i>
+                                <i class="fas fa-circle ml-2 text-dark"></i>
                             </div>
                         </div>
 

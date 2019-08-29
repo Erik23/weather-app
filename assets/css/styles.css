@@ -12,6 +12,10 @@ body {
   color: #6c757d;
 }
 
+.toggle-light {
+  color: #6c757d;
+}
+
 /* Dark theme */
 body.dark {
   background: black;
